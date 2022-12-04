@@ -9,3 +9,7 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     # add in thumbnail and author later
+
+    # shows the title of the instance in the ORM
+    def __str__(self):
+        return self.title
