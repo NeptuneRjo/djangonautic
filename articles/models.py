@@ -8,7 +8,8 @@ class Article(models.Model):
     slug = models.SlugField()
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    # add in thumbnail and author later
+    thumb = models.ImageField(default='default.png', blank=True)
+    # add in author later
 
     # shows the title of the instance in the ORM
     def __str__(self):
