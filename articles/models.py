@@ -13,3 +13,6 @@ class Article(models.Model):
     # shows the title of the instance in the ORM
     def __str__(self):
         return self.title
+
+    def snippet(self):
+        return self.body[:50] + '...'
