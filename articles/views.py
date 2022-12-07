@@ -28,6 +28,13 @@ def article_create(request):
 
         if form.is_valid():
             # save article to db
+            # creats an instance thats ABOUT to be saved but has not been commited to being saved
+            article_instance = form.save(commit=False)
+            article_instance.author = request.user
+
+            # attach author and commit
+            article_instance.save()
+
             return redirect('articles:list')
 
     else:
