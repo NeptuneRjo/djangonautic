@@ -33,7 +33,12 @@ def login_view(request):
 
             login(request, user)
 
-            return redirect('articles:list')  # redirects to /articles
+            # if the next param exists on the post request, redirect to the url attached to it
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('articles:list')  # redirects to /articles
+
     else:
         form = AuthenticationForm()
 

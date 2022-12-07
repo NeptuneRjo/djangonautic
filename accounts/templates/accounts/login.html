@@ -3,7 +3,17 @@
 <!-- Submitting the form causes the view for accounts:login to fire -->
 <form class="'site-form" action="{% url 'accounts:login' %}" method="post">
 	<!-- cross-site request forgery token -->
-	{% csrf_token %} {{form}} <input type="submit" value="Login" />
+	{% csrf_token %}
+
+	<!-- the form -->
+	{{form}}
+
+	<!-- if the next query parameter exists, load the hidden input and get the parameter url -->
+	{% if request.GET.next %}
+	<input type="hidden" name="next" value="{{ request.GET.next }}" />
+	{% endif %}
+
+	<input type="submit" value="Login" />
 </form>
 
 {% endblock %}

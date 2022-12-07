@@ -18,6 +18,7 @@ def article_detail(request, slug):
     return render(request, 'articles/article_detail.html', {'article': article})
 
 
+# reqirects users to /accounts/login if not logged in
 @login_required(login_url='accounts:login')
 def article_create(request):
     return render(request, 'articles/article_create.html')
