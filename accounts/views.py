@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login
 
 # Create your views here.
 
@@ -10,8 +11,9 @@ def signup_view(request):
         form = UserCreationForm(request.POST)
 
         if form.is_valid():
-            form.save()  # saves the data to the db, creating a new user
-            # TBD: log user in
+            user = form.save()  # saves the data to the db, creating a new user
+
+            login(request, user)
 
             return redirect('articles:list')  # redirects to /articles
     else:
@@ -27,7 +29,10 @@ def login_view(request):
         form = AuthenticationForm(data=request.POST)
 
         if form.is_valid():
-            # TBD: log user in
+            user = form.get_user()
+
+            login(request, user)
+
             return redirect('articles:list')  # redirects to /articles
     else:
         form = AuthenticationForm()
