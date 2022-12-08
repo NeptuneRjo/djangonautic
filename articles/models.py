@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+# python3 manage.py makemigrations
+# python3 manage.py migrate
+
+# prepare for migrations after change to models
+# migrate
+
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
