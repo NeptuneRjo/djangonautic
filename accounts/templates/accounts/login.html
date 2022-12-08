@@ -1,7 +1,7 @@
 {% extends 'base_layout.html' %} {% block content %}
 <h1>Log in</h1>
 <!-- Submitting the form causes the view for accounts:login to fire -->
-<form class="'site-form" action="{% url 'accounts:login' %}" method="post">
+<form class="site-form" action="{% url 'accounts:login' %}" method="post">
 	<!-- cross-site request forgery token -->
 	{% csrf_token %}
 
